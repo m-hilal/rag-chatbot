@@ -35,7 +35,6 @@ This is a backend application for a Retrieval-Augmented Generation (RAG) based c
     *   Database credentials (`DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_DATABASE`).
     *   Vector Database connection details (e.g., Qdrant URL/API Key).
     *   LLM API Key (e.g., OpenAI API Key).
-    *   AWS credentials (if using S3 for storage).
 
 4.  **Database Setup:**
     *   Ensure you have a running PostgreSQL instance configured according to your environment variables.
