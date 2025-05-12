@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-chat-api
+    # Mount the source code for development hot-reloading (optional, adjust as needed)
+    # volumes:
+    #   - .:/usr/src/app
+    #   - /usr/src/app/node_modules # Exclude node_modules from host mount
+    ports:
+      - "${PORT:-3000}:3000" # Map host port (from .env or default 3000) to container port 3000
+    depends_on:
+      - postgres
+    env_file:
+      - .env # Pass environment variables from .env file
+    environment:
+      # Override DB host to point to the Docker service name
+      DB_HOST: postgres
+      NODE_ENV: ${NODE_ENV:-development} # Default to development if not set in .env
+    # command: npm run start:dev # Uncomment for development with hot-reloading
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: rag-chat-db
+    ports:
+      - "${DB_PORT:-5434}:5434" # Map host DB port (from .env or default 5432) to container port 5432
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+      POSTGRES_DB: ${DB_DATABASE:-ragchatdb}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist database data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local 
