@@ -1,6 +1,8 @@
 # RAG Chatbot with PDF Support
 
-A sophisticated Retrieval-Augmented Generation (RAG) chatbot application that enables users to upload PDF documents and ask questions about their content. The chatbot uses advanced NLP models from IBM Watson to understand documents and provide accurate answers.
+![RAG Chatbot Interface](https://github.com/m-hilal/rag-chatbot/blob/main/README.md)
+
+A sophisticated Retrieval-Augmented Generation (RAG) chatbot application that enables users to upload PDF documents and ask questions about their content. The chatbot uses advanced NLP models from IBM[...]
 
 ## Features
 
